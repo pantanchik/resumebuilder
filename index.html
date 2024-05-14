@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Resume Builder</title>
+		<link rel="stylesheet" href="styles/resumeFormStyle.css"/>
+        <link rel="stylesheet" href="styles/resumePreviewStyle.css" />
+	</head>
+	<body>
+		<div id="resumeBuilder">                     
+			<div class="container" id="resumeFormContainer" test-id="resume-builder">				
+				<form id="resumeForm"  style="margin-top: 3%;">
+					<!-- Main Section -->
+                    <div class="section">
+                        <div class="form-group">
+                            <label for="fullNameInput">Фамилия Имя Отчество</label>
+                            <br>
+                            <input type="text" id="fullNameInput" test-id="personal-info"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="dobInput">Дата рождения</label>
+                            <br>
+                            <input type="date" id="dobInput" test-id="personal-info"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="cityInput">Город</label>
+                            <br>
+                            <input type="text" id="cityInput" test-id="personal-info"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="phoneNumberInput">Номер телефона</label>
+                            <br>
+                            <input type="tel" id="phoneNumberInput" test-id="personal-info"/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="emailInput">Email</label>
+                            <br>
+                            <input type="email" id="emailInput" test-id="personal-info"/>
+                        </div>
+    
+                        <div class="form-group" id="interestsGroup">
+                            <label>Интересы</label>
+                            <br>
+                            <div class="interests">
+                                <input type="text" class="interestInput" id="first-interestInput" test-id="interest"/>
+                                <br>
+                            </div>                           						
+                            <button type="button" id="addInterest" test-id="add-interest">Добавить интерес</button>
+                            <button type="button" id="removeInterest" test-id="remove-interest">Удалить интерес</button>
+                        </div>
+    
+                        <div class="form-group" id="languagesGroup">
+                            <label>Языки</label>
+                            <div class="languages">
+                                <input type="text" class="languageInput" test-id="language-name" placeholder="Язык"/>
+                                <input type="text" class="proficiencyInput" test-id="language-level" placeholder="Уровень владения"/>
+                            </div>
+                            <button type="button" id="addLanguage" test-id="add-language">Добавить язык</button>
+                            <button type="button" id="removeLanguage" test-id="remove-language">Удалить язык</button>
+                        </div>
+                    </div>					
+
+					<!-- Description Section -->
+                    <div class="section">
+                        <div class="form-group">
+                            <label for="descriptionInput">Описание о себе</label>
+                            <br>
+                            <textarea class="textareaDescriptionResize" id="descriptionInput" test-id="personal-description" rows="3"></textarea>
+                        </div>
+                    </div>				
+
+					<!-- Work Experience Section -->
+                    <div class="section">
+                        <div class="form-group" id="experienceGroup">
+                            <label>Опыт работы</label>
+                            <div class="experienceInput">
+                                <div class="space-between">
+                                    <input type="text" class="position" test-id="job-title" placeholder="Должность"/>
+                                    <div>
+                                        <input type="date" class="startDate" test-id="job-date-start"/>
+                                        <input type="date" class="endDate" test-id="job-date-end"/>  
+                                    </div>                                                                    
+                                </div>  
+                                <input type="text" class="company" test-id="job-place" placeholder="Место работы"/>                             
+                                <br>
+                                <textarea class="textareaExperienceResize details" test-id="job-description" rows="3" placeholder="Детальная информация"></textarea>
+                            </div>
+                            <button type="button" id="addExperience" test-id="add-job">Добавть опыт работы</button>
+                            <button type="button" id="removeExperience" test-id="remove-job">Удалить опыт работы</button>
+                        </div>
+                    </div>					
+
+					<!-- Education Section -->
+                    <div class="section">
+                        <div class="form-group" id="educationGroup">
+                            <label>Образование и квалификация</label>
+                            <div class="educationInput">
+                                <div class="space-between">
+                                    <input type="text" class="degree" test-id="education-title" placeholder="Образование"/>
+                                    <div>
+                                        <input type="date" class="startDate" test-id="education-date-start"/>
+                                        <input type="date" class="endDate" test-id="education-date-end"/>
+                                    </div>
+                                </div>
+                                <input type="text" class="institution" test-id="education-place" placeholder="Место обучения"/>
+                                <br>
+                                <textarea class="textareaEducationResize details" test-id="education-description" rows="3" placeholder="Детальная информация"></textarea>
+                            </div>
+                            <button type="button" id="addEducation" test-id="add-education">Добавть образование</button>
+                            <button type="button" id="removeEducation" test-id="remove-education">Удалить образование</button>
+                        </div>
+                    </div>					
+
+					<!-- Courses Section -->
+                    <div class="section">
+                        <div class="form-group" id="coursesGroup">
+                            <label>Курсы</label>
+                            <div class="coursesInput">
+                                <div class="space-between">
+                                    <input type="text" class="course" test-id="course-title" placeholder="Курс"/>
+                                    <div>
+                                        <input type="date" class="startDate" test-id="course-date-start"/>
+                                        <input type="date" class="endDate" test-id="course-date-end"/>
+                                    </div>                            
+                                </div>                                                          
+                                <input type="text" class="organization" test-id="course-place" placeholder="Авторы курса"/>
+                            </div>
+                            <button type="button" id="addCourse" test-id="add-course">Добавить курсы</button>
+                            <button type="button" id="removeCourse" test-id="remove-course">Удалить курсы</button>
+                        </div>
+                    </div>
+
+                    <div class="alignmentButton">
+                        <button type="button" style="margin-bottom: 3%;" id="createResume" test-id="generate-resume" disabled>Создать резюме</button>
+                    </div>
+				</form>
+			</div>
+
+			<div class="container" id="resumePreviewContainer" style="display: none">
+				<div id="resumePreview">
+					<!-- Здесь будет отображаться созданное резюме -->
+                    <div class="main-info-wrapper" test-id="resume-main-content">
+                        <div class="first-main-info" test-id="resume-main-article">
+                            <div class="user-pic"><img src="images/photo.jpg" alt="" /></div>
+            
+                            <div class="first-main-section" >
+                                <h3>Личные данные</h3>
+                                <hr>
+                                <div class="first-main-section-content" test-id="resume-main-section">
+                                    <div>
+                                        <span><b>ФИО</b></span>
+                                        <br />
+                                        <span class="font-size-12p5 fullName">Данилов Дмитрий Евгеньевич</span>
+                                    </div>
+                                    <div id="dob"></div>
+                                    <div id="city"></div>
+                                    <div id="phoneNumber"></div>
+                                    <div id="email"></div>
+                                </div>
+                            </div>
+            
+                            <div class="first-main-section" test-id="resume-main-section">
+                                <div class="first-main-section-content" test-id="resume-main-section">
+                                    <b id="interestGroup"></b>
+                                </div>
+                            </div>
+            
+                            <div class="first-main-section" test-id="resume-main-section">
+                                <div class="first-main-section-content" id="languages"></div>
+                            </div>
+                        </div>
+            
+                        <div class="second-main-info" test-id="resume-main-article">
+                            <div class="second-main-section" test-id="resume-main-section">
+                                <div class="user-name">
+                                    <span class="fullName"><b>Данилов Дмитрий Евгеньевич</b></span>
+                                    <hr style="margin-top: 5%;">
+                                </div>
+                                <div id="description">
+                                    <span>В целом достаточно сильный разработчик, я бы даже сказал умный, вообще умен не по годам. Подниму ваш проект, удалю все легаси, и все коммиты будут маленькими по 15 строк кода.</span>
+                                </div>
+                            </div>
+            
+                            <div class="second-main-section" test-id="resume-main-section">
+                                <h3>Опыт работы</h3>
+                                <hr>
+                                <div class="second-main-section-content"  id="experience">
+                                    <div>
+                                        <div class="space-between">
+                                            <span><b>C++ разработчик</b></span><span class="font-size-12p5">сентябрь 2020 г. — наст. время</span>
+                                        </div>
+                                        <span><i>ООО Рога и Копыта, Москва</i></span>
+                                        <br>
+                                        <div><span class="font-size-12p5">Писал компилятор под js, который позволял ускорить билд приложений.</span></div>
+                                    </div>
+                                    <div>
+                                        <div class="space-between">
+                                            <span><b>Angular-разработчик</b></span><span class="font-size-12p5">февраль 2020 г. — август 2020 г.</span>
+                                        </div>
+                                        <span><i>Тинькофф Центр Разработки, Ижевск</i></span>
+                                        <br>
+                                        <div><span class="font-size-12p5">Придумывал аналитические решения и разрабатывал веб-сайты для улучшения опыта пользователей.</span></div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="second-main-section" test-id="resume-main-section">
+                                <h3>Образование и квалификация</h3>
+                                <hr>
+                                <div class="second-main-section-content" id="education">
+                                    <div>
+                                        <div class="space-between">
+                                            <span><b>Магистратура</b></span><span class="font-size-12p5">сентябрь 2020 г. — наст. время</span>
+                                        </div>
+                                        <span><i>ЦУ, Москва</i></span>
+                                        <br>
+                                        <div><span class="font-size-12p5">Дизайн и разработка ПО</span></div>
+                                    </div>                                                             
+                                    <div>
+                                        <div class="space-between">
+                                            <span><b>Бакалавриат</b></span><span class="font-size-12p5">февраль 2020 г. — август 2020 г.</span>
+                                        </div>
+                                        <span><i>Уральский федеральный университет, Екатеринбург</i></span>
+                                        <br>
+                                        <div><span class="font-size-12p5">Направление: МОАИС.</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="second-main-section" test-id="resume-main-section">
+                                <h3>Курсы</h3>
+                                <hr>
+                                <div class="second-main-section-content" id="course" style="margin-bottom: 3%;">
+                                    <div>
+                                        <div class="space-between">
+                                            <span><b>Школа промышленной разработки</b></span><span class="font-size-12p5">январь 2021 г. — май 2021 г.</span>
+                                        </div>
+                                        <span><i>Известная компания</i></span>
+                                    </div>
+                                    <div>
+                                        <div class="space-between">
+                                            <span><b>Основы JavaScript, HTML, CSS</b></span><span class="font-size-12p5">февраль 2020 г. — август 2020 г.</span>
+                                        </div>
+                                        <span><i>ЦУ</i></span>
+                                    </div>
+                                    <div>
+                                        <div class="space-between">
+                                            <span><b>Разработка на C++</b></span><span class="font-size-12p5">январь 2019 г. — январь 2020 г.</span>
+                                        </div>
+                                        <span><i>Образование для Всех</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+                <button type="button" id="backToForm" test-id="back-button">Вернуться в форму</button>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
