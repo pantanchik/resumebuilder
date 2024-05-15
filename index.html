@@ -4,8 +4,12 @@
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>Resume Builder</title>
+
 		<link rel="stylesheet" href="styles/resumeFormStyle.css"/>
         <link rel="stylesheet" href="styles/resumePreviewStyle.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 	</head>
 	<body>
 		<div id="resumeBuilder">                     
@@ -135,6 +139,10 @@
                         </div>
                     </div>
 
+                    <div class="section">
+                        <input type="file" id="inputImage" accept="image/*"/>
+                    </div>
+
                     <div class="alignmentButton">
                         <button type="button" style="margin-bottom: 3%;" id="createResume" test-id="generate-resume" disabled>Создать резюме</button>
                     </div>
@@ -146,7 +154,7 @@
 					<!-- Здесь будет отображаться созданное резюме -->
                     <div class="main-info-wrapper" test-id="resume-main-content">
                         <div class="first-main-info" test-id="resume-main-article">
-                            <div class="user-pic"><img src="images/photo.jpg" alt="" /></div>
+                            <div class="user-pic"><img src="" id="userPhoto" alt="" /></div>
             
                             <div class="first-main-section" >
                                 <h3>Личные данные</h3>
@@ -259,7 +267,10 @@
                         </div>
                     </div>
 				</div>
-                <button type="button" id="backToForm" test-id="back-button">Вернуться в форму</button>
+                <div style="position: sticky; top: 0px;">
+                    <button type="button" id="backToForm" test-id="back-button">Вернуться в форму</button>
+                    <button type="button" id="downloadPDF">Скачать PDF</button>
+                </div>
 			</div>
 		</div>
 

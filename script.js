@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const backToFormButton = document.getElementById('backToForm')
 	const resumeForm = document.getElementById('resumeForm')
 	const resumePreview = document.getElementById('resumePreview')
+    const downloadPDF = document.getElementById('downloadPDF')
 
 	addInterestButton.addEventListener('click', function () {
 		const interestsGroup = document.getElementById('interestsGroup')
@@ -75,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     removeExperienceButton.addEventListener('click', function () {
         const experienceGroup = document.getElementById('experienceGroup')
-        const experienceDivs = experienceGroup.querySelectorAll('.experience')
-        if (experienceDivs.length > 1) {
+        const experienceDivs = experienceGroup.querySelectorAll('.experienceInput')
+        if (experienceDivs.length != 1) {
             experienceGroup.removeChild(experienceDivs[experienceDivs.length - 1])
         }
     })
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     removeEducationButton.addEventListener('click', function () {
         const educationGroup = document.getElementById('educationGroup')
-        const educationDivs = educationGroup.querySelectorAll('.education')
+        const educationDivs = educationGroup.querySelectorAll('.educationInput')
         if (educationDivs.length > 1) {
           educationGroup.removeChild(educationDivs[educationDivs.length - 1])
         }
@@ -127,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     removeCourseButton.addEventListener('click', function () {
         const coursesGroup = document.getElementById('coursesGroup')
-        const courseDivs = coursesGroup.querySelectorAll('.courses')
+        const courseDivs = coursesGroup.querySelectorAll('.coursesInput')
         if (courseDivs.length > 1) {
           coursesGroup.removeChild(courseDivs[courseDivs.length - 1])
         }
@@ -149,6 +150,26 @@ document.addEventListener('DOMContentLoaded', function () {
 		resumeFormContainer.style.display = 'flex'
 		resumePreviewContainer.style.display = 'none'
 	})
+
+    downloadPDF.addEventListener('click', function () {
+        html2canvas(resumePreview).then(canvas => {
+            // Получение объекта jsPDF из глобального объекта window
+            const { jsPDF } = window.jspdf;
+            // Инициализация нового документа PDF с размером страницы A4
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            // Вычисление масштаба для соответствия ширины A4
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const canvasWidth = canvas.width;
+            const canvasHeight = canvas.height;
+            const scale = pageWidth / canvasWidth;
+            // Добавление изображения в документ PDF с учетом масштаба
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, canvasWidth * scale, canvasHeight * scale);
+            // Сохранение документа PDF
+            pdf.save('download.pdf');
+        });
+          
+    })
 
     const fullNameInput = document.getElementById("fullNameInput")
 
@@ -174,9 +195,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const languageInput = document.querySelectorAll('.languageInput')
         const languages = document.getElementById('languages')
 
+        const inputImage = document.getElementById('inputImage')
+
         let fullName = document.querySelectorAll('.fullName')
 
-        fullName.forEach(elem => (elem.textContent = fullNameInput))       
+        fullName.forEach(elem => (elem.textContent = fullNameInput))
 
         function formatDate(date) {
             let options = { year: 'numeric', month: 'numeric', day: 'numeric' }
@@ -309,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				const details = block.querySelector('.details').value
                 let spanDate = '' 
 
-                if(startDate != 'Invalid Date' && endDate != 'Invalid Date') {
+                if(startDate != 'Invalid Date' || endDate != 'Invalid Date') {
                     if(startDate == 'Invalid Date') {
                         startDate = '—'
                     }
@@ -360,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const details = block.querySelector('.details').value
                 let spanDate = ''
 
-                if(startDate != 'Invalid Date' && endDate != 'Invalid Date') {
+                if(startDate != 'Invalid Date' || endDate != 'Invalid Date') {
                     if(startDate == 'Invalid Date') {
                         startDate = '—'
                     }
@@ -412,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const organization = block.querySelector('.organization').value
                 let spanDate = ''
 
-                if(startDate != 'Invalid Date' && endDate != 'Invalid Date') {
+                if(startDate != 'Invalid Date' || endDate != 'Invalid Date') {
                     if(startDate == 'Invalid Date') {
                         startDate = '—'
                     }
@@ -448,7 +471,25 @@ document.addEventListener('DOMContentLoaded', function () {
     
             // Вставляем HTML-код для курсов на страницу
             document.getElementById('course').innerHTML = courseHTML
-        }		
+        }
+        
+        function displayImage(inputElement) {
+            const file = inputElement.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const base64Image = e.target.result;
+                document.getElementById('userPhoto').src = base64Image;
+            };
+            
+            reader.onerror = function(error) {
+                console.error('Ошибка при чтении файла: ', error);
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        displayImage(inputImage)
 
         const obj1 = document.querySelector(".first-main-info")
         const obj2 = document.querySelector(".second-main-info")
