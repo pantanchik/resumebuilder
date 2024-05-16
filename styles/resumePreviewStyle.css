@@ -77,4 +77,14 @@ h3 {
     font-size: 27.9px;    
 }
 
+#backToForm { 
+    margin-left: 3%;
+    margin-top: 3%;
+    font-weight: 400;
+}
 
+#downloadPDF {
+    margin-left: 3%;
+    margin-top: 3%;
+    font-weight: 400;
+}

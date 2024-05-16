@@ -61,14 +61,17 @@ button {
     justify-content: center;
 }
 
-#backToForm { 
+#labelImage {
+    padding: 7px 15px;
     margin-left: 3%;
-    margin-top: 3%;
-    font-weight: 400;
+    margin-right: 2%;
+    border: 2px solid #00aa87;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #00aa87;
+    background-color: white;
 }
 
-#downloadPDF {
-    margin-left: 3%;
-    margin-top: 3%;
-    font-weight: 400;
+#inputImage {
+    display: none;
 }

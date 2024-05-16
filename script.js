@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const resumeForm = document.getElementById('resumeForm')
 	const resumePreview = document.getElementById('resumePreview')
     const downloadPDF = document.getElementById('downloadPDF')
+    const inputImage = document.getElementById('inputImage');
 
 	addInterestButton.addEventListener('click', function () {
 		const interestsGroup = document.getElementById('interestsGroup')
@@ -133,6 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
           coursesGroup.removeChild(courseDivs[courseDivs.length - 1])
         }
     })
+
+    inputImage.addEventListener('change', function() {
+        const fileName = inputImage.value.split('\\').pop();
+        document.getElementById('nameImage').textContent = fileName || 'Загрузить файл';
+    });
 
 	createResumeButton.addEventListener('click', function () {
 		const fullName = document.getElementById('fullNameInput').value
